@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ 'Editar Cliente' if form.nome.data else 'Novo Cliente' }}</h1>
+
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.nome.label }} {{ form.nome }}
+        {% if form.nome.errors %}
+            <span class="error">{{ form.nome.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.idade.label }} {{ form.idade }}
+        {% if form.idade.errors %}
+            <span class="error">{{ form.idade.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.cpf.label }} {{ form.cpf }}
+        {% if form.cpf.errors %}
+            <span class="error">{{ form.cpf.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.email.label }} {{ form.email }}
+        {% if form.email.errors %}
+            <span class="error">{{ form.email.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.endereco.label }} {{ form.endereco }}
+        {% if form.endereco.errors %}
+            <span class="error">{{ form.endereco.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn">Salvar</button>
+</form>
+
+<a href="{{ url_for('lista_clientes') }}">Voltar</a>
+{% endblock %}

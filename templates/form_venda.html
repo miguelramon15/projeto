@@ -1,0 +1,33 @@
+<!-- form_venda.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Cadastrar Nova Venda</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.cliente_id.label }}<br>
+        {{ form.cliente_id() }}<br>
+        {% for error in form.cliente_id.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.produto_id.label }}<br>
+        {{ form.produto_id() }}<br>
+        {% for error in form.produto_id.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.quantidade.label }}<br>
+        {{ form.quantidade() }}<br>
+        {% for error in form.quantidade.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}

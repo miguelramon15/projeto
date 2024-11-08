@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ 'Editar Produto' if form.nome.data else 'Novo Produto' }}</h1>
+
+<form method="POST" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.nome.label }} {{ form.nome }}
+        {% if form.nome.errors %}
+            <span class="error">{{ form.nome.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.preco.label }} {{ form.preco }}
+        {% if form.preco.errors %}
+            <span class="error">{{ form.preco.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.descricao.label }} {{ form.descricao }}
+        {% if form.descricao.errors %}
+            <span class="error">{{ form.descricao.errors[0] }}</span>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.quantidade_estoque.label }} {{ form.quantidade_estoque }}
+        {% if form.quantidade_estoque.errors %}
+            <span class="error">{{ form.quantidade_estoque.errors[0] }}</span>
+        {% endif %}
+    </div>
+   
+    <button type="submit" class="btn">Salvar</button>
+</form>
+
+<a href="{{ url_for('lista_produtos') }}">Voltar</a>
+{% endblock %}

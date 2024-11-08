@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Lista de Produtos</h1>
+<a href="{{ url_for('novo_produto') }}" class="btn">Adicionar Novo Produto</a>
+<!-- Botão de Voltar -->
+<a href="{{ url_for('index') }}" class="btn btn-voltar">Voltar à Página Inicial</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Descrição</th>
+            <th>Quantidade em Estoque</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produto in produtos %}
+        <tr>
+            <td>{{ produto.nome }}</td>
+            <td>R$ {{ produto.preco }}</td>
+            <td>{{ produto.descricao }}</td>
+            <td>{{ produto.quantidade_estoque }}</td>
+            <td>
+                <a href="{{ url_for('editar_produto', id=produto.id) }}">Editar</a>
+                <a href="{{ url_for('deletar_produto', id=produto.id) }}" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

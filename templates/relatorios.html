@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Relatórios de Vendas</h1>
+
+<h2>Vendas por Cliente</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Total de Vendas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente, total in vendas_por_cliente.items() %}
+        <tr>
+            <td>{{ cliente }}</td>
+            <td>{{ total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Gráficos de Vendas</h2>
+<img src="{{ url_for('static', filename='graficos/vendas_diarias.png') }}" alt="Gráfico de Vendas Diárias">
+<img src="{{ url_for('static', filename='graficos/vendas_acumuladas.png') }}" alt="Gráfico de Vendas Acumuladas">
+{% endblock %}

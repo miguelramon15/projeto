@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-commerce{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{% block header_title %}Bem-vindo ao E-commerce Web!{% endblock %}</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('lista_clientes') }}">Clientes</a></li>
+                <li><a href="{{ url_for('lista_produtos') }}">Produtos</a></li>
+                <li><a href="{{ url_for('vendas') }}">Vendas</a></li>
+                <li><a href="{{ url_for('relatorios') }}">Relatórios</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li> <!-- Link para a página de login -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Sistema de E-commerce</p>
+    </footer>
+</body>
+</html>

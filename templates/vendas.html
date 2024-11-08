@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Registro de Vendas</h1>
+<a href="{{ url_for('nova_venda') }}" class="btn">Registrar Nova Venda</a>
+<table>
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for venda in vendas %}
+        <tr>
+            <td>{{ venda.cliente.nome }}</td>
+            <td>{{ venda.produto.nome }}</td>
+            <td>{{ venda.quantidade }}</td>
+            <td>{{ venda.data }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

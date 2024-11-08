@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Lista de Clientes</h1>
+        <a href="{{ url_for('novo_cliente') }}">Adicionar Novo Cliente</a>
+        <!-- Botão de Voltar -->
+        <a href="{{ url_for('index') }}" class="btn-voltar">Voltar à Página Inicial</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.idade }}</td>
+                    <td>{{ cliente.cpf }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.endereco }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_cliente', id=cliente.id) }}">Editar</a>
+                        <a href="{{ url_for('deletar_cliente', id=cliente.id) }}" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
